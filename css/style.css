@@ -939,3 +939,453 @@ footer {
   }
 
 }
+/* =========================
+   تسجيل الدخول
+========================= */
+
+.auth-page {
+  min-height: calc(100vh - 74px);
+
+  display: flex;
+  align-items: center;
+
+  padding: 70px 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      #cce9e1,
+      transparent 30%
+    ),
+    #f7faf9;
+}
+
+
+.auth-container {
+  width: min(1050px, 90%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 460px;
+
+  align-items: center;
+
+  gap: 100px;
+}
+
+
+/* الجانب التعريفي */
+
+.auth-info h1 {
+  max-width: 500px;
+
+  font-size: 52px;
+
+  line-height: 1.3;
+
+  margin-bottom: 20px;
+}
+
+
+.auth-info h1 span {
+  display: block;
+
+  color: #146b5a;
+}
+
+
+.auth-info > p {
+  max-width: 500px;
+
+  color: #6d7885;
+
+  font-size: 17px;
+
+  line-height: 2;
+}
+
+
+.auth-features {
+  margin-top: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+.auth-features div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.auth-features div > span {
+  width: 30px;
+  height: 30px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  background: #dff2ec;
+
+  color: #146b5a;
+
+  border-radius: 50%;
+
+  font-weight: bold;
+}
+
+
+.auth-features p {
+  color: #53616c;
+}
+
+
+/* بطاقة الدخول */
+
+.auth-card {
+  padding: 40px;
+
+  background: white;
+
+  border: 1px solid #e1e7e5;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 25px 70px
+    rgba(22, 70, 60, 0.10);
+}
+
+
+.auth-card-head {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+
+.auth-logo {
+  width: 55px;
+  height: 55px;
+
+  margin:
+    0 auto 18px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #146b5a;
+
+  color: white;
+
+  border-radius: 14px;
+
+  font-size: 25px;
+
+  font-weight: bold;
+}
+
+
+.auth-card-head h2 {
+  font-size: 28px;
+
+  margin-bottom: 7px;
+}
+
+
+.auth-card-head p {
+  color: #89929d;
+
+  font-size: 14px;
+}
+
+
+/* الحقول */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #35414c;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+
+
+.form-group input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  background: #fafbfc;
+
+  border: 1px solid #dfe5e8;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+
+.form-group input:focus {
+  border-color: #4d9b88;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(20, 107, 90, 0.08);
+}
+
+
+.label-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+
+.label-row a {
+  color: #146b5a;
+
+  font-size: 12px;
+}
+
+
+/* كلمة المرور */
+
+.password-box {
+  position: relative;
+}
+
+
+.password-box input {
+  padding-left: 70px;
+}
+
+
+.show-password {
+  position: absolute;
+
+  left: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: 0;
+
+  background: transparent;
+
+  color: #146b5a;
+
+  cursor: pointer;
+
+  font-size: 12px;
+}
+
+
+/* زر الدخول */
+
+.auth-submit {
+  width: 100%;
+
+  min-height: 48px;
+
+  margin-top: 5px;
+}
+
+
+/* رسالة */
+
+.auth-message {
+  display: none;
+
+  padding: 12px 15px;
+
+  margin-bottom: 20px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.auth-message.error {
+  display: block;
+
+  color: #a52b2b;
+
+  background: #fff0f0;
+
+  border: 1px solid #ffd1d1;
+}
+
+
+.auth-message.success {
+  display: block;
+
+  color: #11624f;
+
+  background: #e8f7f2;
+
+  border: 1px solid #bde5da;
+}
+
+
+/* أو */
+
+.auth-divider {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 25px 0;
+
+  color: #a0a7af;
+
+  font-size: 12px;
+}
+
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+
+  height: 1px;
+
+  flex: 1;
+
+  background: #e5e8eb;
+}
+
+
+.google-button {
+  width: 100%;
+
+  min-height: 48px;
+
+  background: white;
+
+  border: 1px solid #dfe4e8;
+
+  border-radius: 9px;
+
+  color: #39434d;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+
+.google-button:hover {
+  background: #f8f9fa;
+}
+
+
+.register-text {
+  margin-top: 25px;
+
+  text-align: center;
+
+  color: #7c8690;
+
+  font-size: 14px;
+}
+
+
+.register-text a {
+  color: #146b5a;
+
+  font-weight: bold;
+}
+
+
+/* الجوال */
+
+@media(max-width: 850px) {
+
+  .auth-container {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+
+  .auth-info {
+    text-align: center;
+  }
+
+
+  .auth-info h1,
+  .auth-info > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .auth-info h1 {
+    font-size: 40px;
+  }
+
+
+  .auth-features {
+    display: none;
+  }
+
+
+  .auth-card {
+    max-width: 500px;
+
+    width: 100%;
+
+    margin: auto;
+  }
+
+}
+
+
+@media(max-width: 500px) {
+
+  .auth-card {
+    padding: 27px 20px;
+  }
+
+
+  .auth-info h1 {
+    font-size: 34px;
+  }
+
+}
