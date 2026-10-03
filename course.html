@@ -2,73 +2,221 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>مهارات التواصل | مهارة</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <!--
+    نخفي الصفحة مؤقتاً حتى يتأكد
+    Firebase أن المستخدم مسجل
+  -->
+
+  <style>
+
+    body {
+      visibility: hidden;
+    }
+
+    body.auth-ready {
+      visibility: visible;
+    }
+
+    .user-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-name {
+      color: #146b5a;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .logout-button {
+      padding: 9px 14px;
+
+      border: 1px solid #dce4e2;
+      border-radius: 8px;
+
+      color: #56645f;
+      background: white;
+
+      font-family: inherit;
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+    .logout-button:hover {
+      color: white;
+      background: #146b5a;
+      border-color: #146b5a;
+    }
+
+    @media(max-width: 600px) {
+
+      .user-name {
+        display: none;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     الهيدر
+========================= -->
+
 <header class="header">
+
   <div class="container navbar">
 
-    <a href="index.html" class="logo">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
       <span>م</span>
+
       مهارة
+
     </a>
 
+
     <nav>
-      <a href="index.html">الرئيسية</a>
-      <a href="skills.html">المهارات</a>
+
+      <a href="index.html">
+        الرئيسية
+      </a>
+
+      <a href="skills.html">
+        المهارات
+      </a>
+
     </nav>
 
+
+    <!-- المستخدم -->
+
+    <div class="user-area">
+
+      <span
+        id="userName"
+        class="user-name"
+      >
+      </span>
+
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        تسجيل الخروج
+
+      </button>
+
+    </div>
+
+
   </div>
+
 </header>
 
+
+
+<!-- =========================
+     مقدمة الدورة
+========================= -->
 
 <section class="course-hero">
 
   <div class="container">
 
+
     <div class="course-icon">
       💬
     </div>
+
 
     <span>
       تطوير الذات
     </span>
 
+
     <h1>
       إتقان مهارات التواصل
     </h1>
 
+
     <p>
+
       مسار عملي يساعدك على تحسين طريقة
       تواصلك مع الآخرين والتعبير عن أفكارك
       بثقة ووضوح.
+
     </p>
 
 
+
+    <!-- التقدم -->
+
     <div class="course-progress">
 
+
       <div class="progress-info">
-        <span>تقدمك في المسار</span>
-        <strong id="coursePercent">0%</strong>
+
+        <span>
+          تقدمك في المسار
+        </span>
+
+        <strong id="coursePercent">
+          0%
+        </strong>
+
       </div>
+
 
       <div class="big-progress">
-        <div id="courseProgress"></div>
+
+        <div id="courseProgress">
+        </div>
+
       </div>
 
+
     </div>
+
 
   </div>
 
 </section>
 
+
+
+<!-- =========================
+     الدروس
+========================= -->
 
 <section class="section">
 
@@ -77,16 +225,29 @@
 
     <div>
 
+
       <div class="section-head">
+
         <div>
-          <span>محتوى المسار</span>
-          <h2>الدروس</h2>
+
+          <span>
+            محتوى المسار
+          </span>
+
+          <h2>
+            الدروس
+          </h2>
+
         </div>
+
       </div>
+
 
 
       <div class="lessons">
 
+
+        <!-- الدرس 1 -->
 
         <a
           href="lesson.html?id=1"
@@ -98,7 +259,9 @@
             1
           </span>
 
+
           <div>
+
             <h3>
               مقدمة في التواصل
             </h3>
@@ -106,7 +269,9 @@
             <p>
               5 دقائق
             </p>
+
           </div>
+
 
           <span class="status">
             ابدأ ←
@@ -114,6 +279,9 @@
 
         </a>
 
+
+
+        <!-- الدرس 2 -->
 
         <a
           href="lesson.html?id=2"
@@ -125,7 +293,9 @@
             2
           </span>
 
+
           <div>
+
             <h3>
               الاستماع الفعّال
             </h3>
@@ -133,7 +303,9 @@
             <p>
               8 دقائق
             </p>
+
           </div>
+
 
           <span class="status">
             ابدأ ←
@@ -141,6 +313,9 @@
 
         </a>
 
+
+
+        <!-- الدرس 3 -->
 
         <a
           href="lesson.html?id=3"
@@ -152,7 +327,9 @@
             3
           </span>
 
+
           <div>
+
             <h3>
               لغة الجسد
             </h3>
@@ -160,7 +337,9 @@
             <p>
               10 دقائق
             </p>
+
           </div>
+
 
           <span class="status">
             ابدأ ←
@@ -168,6 +347,9 @@
 
         </a>
 
+
+
+        <!-- الدرس 4 -->
 
         <a
           href="lesson.html?id=4"
@@ -179,7 +361,9 @@
             4
           </span>
 
+
           <div>
+
             <h3>
               التحدث بثقة
             </h3>
@@ -187,7 +371,9 @@
             <p>
               9 دقائق
             </p>
+
           </div>
+
 
           <span class="status">
             ابدأ ←
@@ -195,6 +381,9 @@
 
         </a>
 
+
+
+        <!-- الدرس 5 -->
 
         <a
           href="lesson.html?id=5"
@@ -206,7 +395,9 @@
             5
           </span>
 
+
           <div>
+
             <h3>
               التعامل مع الآخرين
             </h3>
@@ -214,7 +405,9 @@
             <p>
               12 دقيقة
             </p>
+
           </div>
+
 
           <span class="status">
             ابدأ ←
@@ -222,6 +415,9 @@
 
         </a>
 
+
+
+        <!-- الاختبار -->
 
         <a
           href="quiz.html"
@@ -232,7 +428,9 @@
             ✓
           </span>
 
+
           <div>
+
             <h3>
               الاختبار النهائي
             </h3>
@@ -240,7 +438,9 @@
             <p>
               اختبر ما تعلمته
             </p>
+
           </div>
+
 
           <span>
             دخول الاختبار ←
@@ -254,33 +454,67 @@
     </div>
 
 
+
+    <!-- =========================
+         معلومات المسار
+    ========================== -->
+
     <aside class="side-card">
+
 
       <h3>
         معلومات المسار
       </h3>
 
-      <div class="side-row">
-        <span>الدروس</span>
-        <strong>5</strong>
-      </div>
 
       <div class="side-row">
-        <span>المستوى</span>
-        <strong>مبتدئ</strong>
+
+        <span>
+          الدروس
+        </span>
+
+        <strong>
+          5
+        </strong>
+
       </div>
 
+
       <div class="side-row">
-        <span>المدة</span>
-        <strong>44 دقيقة</strong>
+
+        <span>
+          المستوى
+        </span>
+
+        <strong>
+          مبتدئ
+        </strong>
+
       </div>
+
+
+      <div class="side-row">
+
+        <span>
+          المدة
+        </span>
+
+        <strong>
+          44 دقيقة
+        </strong>
+
+      </div>
+
 
       <a
         href="lesson.html?id=1"
         class="button full"
       >
+
         ابدأ أول درس
+
       </a>
+
 
     </aside>
 
@@ -290,7 +524,202 @@
 </section>
 
 
+
+<!-- =========================
+     Firebase
+========================= -->
+
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js">
+</script>
+
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js">
+</script>
+
+
+<!-- إعداد Firebase -->
+
+<script src="js/firebase.js"></script>
+
+
+
+<!-- =========================
+     حماية الصفحة
+========================= -->
+
+<script>
+
+  /*
+    ينتظر Firebase حتى يحدد
+    إذا كان المستخدم مسجل أم لا
+  */
+
+  auth.onAuthStateChanged(
+    function(user) {
+
+
+      /* =========================
+         غير مسجل
+      ========================= */
+
+      if (!user) {
+
+
+        /*
+          نحفظ الصفحة الحالية
+          حتى نرجع إليها بعد الدخول
+        */
+
+        const currentPage =
+
+          window.location.pathname
+            .split("/")
+            .pop()
+
+          +
+
+          window.location.search;
+
+
+        window.location.replace(
+
+          "login.html?next=" +
+
+          encodeURIComponent(
+            currentPage
+          )
+
+        );
+
+
+        return;
+
+      }
+
+
+
+      /* =========================
+         المستخدم مسجل
+      ========================= */
+
+
+      /*
+        نظهر الصفحة
+      */
+
+      document.body
+        .classList
+        .add("auth-ready");
+
+
+
+      /*
+        إظهار اسم المستخدم
+      */
+
+      const userName =
+        document.getElementById(
+          "userName"
+        );
+
+
+      if (user.displayName) {
+
+        userName.textContent =
+          "مرحباً، " +
+          user.displayName;
+
+      }
+
+      else if (user.email) {
+
+        userName.textContent =
+          "مرحباً، " +
+          user.email.split("@")[0];
+
+      }
+
+
+  });
+
+
+
+  /* =========================
+     تسجيل الخروج
+  ========================= */
+
+
+  const logoutButton =
+    document.getElementById(
+      "logoutButton"
+    );
+
+
+  logoutButton.addEventListener(
+    "click",
+    async function() {
+
+
+      logoutButton.disabled =
+        true;
+
+
+      logoutButton.textContent =
+        "جاري الخروج...";
+
+
+      try {
+
+
+        await auth.signOut();
+
+
+        window.location.replace(
+          "index.html"
+        );
+
+
+      }
+
+      catch(error) {
+
+
+        console.error(
+          "Logout error:",
+          error
+        );
+
+
+        logoutButton.disabled =
+          false;
+
+
+        logoutButton.textContent =
+          "تسجيل الخروج";
+
+
+        alert(
+          "حدث خطأ أثناء تسجيل الخروج."
+        );
+
+
+      }
+
+
+    }
+  );
+
+
+</script>
+
+
+
+<!-- JavaScript الموقع -->
+
 <script src="js/app.js"></script>
 
+
 </body>
+
 </html>
