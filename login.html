@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>تسجيل الدخول | مهارة</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+<body>
+
+
+<header class="header">
+
+  <div class="container navbar">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+      <span>م</span>
+      مهارة
+    </a>
+
+    <nav>
+      <a href="index.html">
+        الرئيسية
+      </a>
+
+      <a href="skills.html">
+        المهارات
+      </a>
+
+      <a href="course.html">
+        المسارات
+      </a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="auth-page">
+
+  <div class="auth-container">
+
+
+    <!-- الجانب التعريفي -->
+
+    <section class="auth-info">
+
+      <span class="badge">
+        مرحباً بعودتك 👋
+      </span>
+
+      <h1>
+        أكمل رحلة
+        <span>تطوير مهاراتك</span>
+      </h1>
+
+      <p>
+        سجل دخولك للوصول إلى مساراتك
+        ومتابعة تقدمك والتعلم من حيث توقفت.
+      </p>
+
+
+      <div class="auth-features">
+
+        <div>
+          <span>✓</span>
+
+          <p>
+            متابعة تقدمك في المسارات
+          </p>
+        </div>
+
+        <div>
+          <span>✓</span>
+
+          <p>
+            حفظ الدروس التي أكملتها
+          </p>
+        </div>
+
+        <div>
+          <span>✓</span>
+
+          <p>
+            الوصول إلى نتائج اختباراتك
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- نموذج تسجيل الدخول -->
+
+    <section class="auth-card">
+
+      <div class="auth-card-head">
+
+        <div class="auth-logo">
+          م
+        </div>
+
+        <h2>
+          تسجيل الدخول
+        </h2>
+
+        <p>
+          أدخل بيانات حسابك للمتابعة
+        </p>
+
+      </div>
+
+
+      <div
+        id="loginMessage"
+        class="auth-message"
+      ></div>
+
+
+      <form id="loginForm">
+
+
+        <div class="form-group">
+
+          <label for="loginEmail">
+            البريد الإلكتروني
+          </label>
+
+          <input
+            id="loginEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="name@example.com"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <div class="label-row">
+
+            <label for="loginPassword">
+              كلمة المرور
+            </label>
+
+            <a href="#">
+              نسيت كلمة المرور؟
+            </a>
+
+          </div>
+
+
+          <div class="password-box">
+
+            <input
+              id="loginPassword"
+              type="password"
+              autocomplete="current-password"
+              placeholder="أدخل كلمة المرور"
+              required
+            >
+
+            <button
+              type="button"
+              id="togglePassword"
+              class="show-password"
+            >
+              إظهار
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="button auth-submit"
+        >
+          تسجيل الدخول
+        </button>
+
+
+      </form>
+
+
+      <div class="auth-divider">
+        <span>
+          أو
+        </span>
+      </div>
+
+
+      <button
+        type="button"
+        class="google-button"
+      >
+        G
+        المتابعة باستخدام Google
+      </button>
+
+
+      <p class="register-text">
+
+        ليس لديك حساب؟
+
+        <a href="register.html">
+          إنشاء حساب جديد
+        </a>
+
+      </p>
+
+    </section>
+
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <div class="container footer">
+
+    <div>
+      © 2026 مهارة
+    </div>
+
+    <div>
+      تعلم • طبّق • تطور
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
