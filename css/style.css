@@ -1389,3 +1389,22 @@ footer {
   }
 
 }
+/* أزرار الهيدر */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login-link {
+  padding: 10px 16px;
+  color: #146b5a;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.login-link:hover {
+  background: #edf7f4;
+}
