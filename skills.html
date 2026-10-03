@@ -2,50 +2,256 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>المهارات | مهارة</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <style>
+
+    /* =========================
+       الحساب في الهيدر
+    ========================== */
+
+    .account-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .user-area {
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .welcome-user {
+      color: #146b5a;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+
+    .login-link {
+      color: #146b5a;
+      font-weight: bold;
+    }
+
+
+    .logout-button {
+
+      padding: 9px 14px;
+
+      background: white;
+
+      color: #56645f;
+
+      border: 1px solid #dce4e2;
+
+      border-radius: 8px;
+
+      font-family: inherit;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+
+    .logout-button:hover {
+
+      color: white;
+
+      background: #146b5a;
+
+      border-color: #146b5a;
+
+    }
+
+
+    @media(max-width: 650px) {
+
+      .welcome-user {
+        display: none;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     الهيدر
+========================= -->
+
 <header class="header">
+
   <div class="container navbar">
 
-    <a href="index.html" class="logo">
-      <span>م</span>
+
+    <!-- الشعار -->
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <span>
+        م
+      </span>
+
       مهارة
+
     </a>
 
+
+
+    <!-- القائمة -->
+
     <nav>
-      <a href="index.html">الرئيسية</a>
-      <a href="skills.html">المهارات</a>
-      <a href="course.html">مسارات التعلم</a>
+
+      <a href="index.html">
+        الرئيسية
+      </a>
+
+      <a href="skills.html">
+        المهارات
+      </a>
+
+      <a href="course.html">
+        مسارات التعلم
+      </a>
+
     </nav>
 
+
+
+    <!-- الحساب -->
+
+    <div class="account-area">
+
+
+      <!-- غير مسجل -->
+
+      <div
+        id="guestArea"
+        class="header-actions"
+      >
+
+
+        <a
+          href="login.html"
+          class="login-link"
+        >
+
+          تسجيل الدخول
+
+        </a>
+
+
+        <a
+          href="register.html"
+          class="button small"
+        >
+
+          إنشاء حساب
+
+        </a>
+
+
+      </div>
+
+
+
+      <!-- مسجل -->
+
+      <div
+        id="userArea"
+        class="user-area"
+      >
+
+
+        <span
+          id="welcomeUser"
+          class="welcome-user"
+        >
+        </span>
+
+
+        <button
+          id="logoutButton"
+          class="logout-button"
+          type="button"
+        >
+
+          تسجيل الخروج
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
   </div>
+
 </header>
 
+
+
+<!-- =========================
+     عنوان الصفحة
+========================= -->
 
 <section class="page-header">
 
   <div class="container">
 
+
     <span>
       مكتبة المهارات
     </span>
+
 
     <h1>
       ماذا تريد أن تتعلم؟
     </h1>
 
+
     <p>
       اختر مهارة وابدأ رحلة تطوير نفسك.
     </p>
 
+
+
+    <!-- البحث -->
 
     <input
       id="skillsSearch"
@@ -54,19 +260,32 @@
       placeholder="ابحث عن مهارة..."
     >
 
+
   </div>
 
 </section>
 
 
+
+<!-- =========================
+     المهارات
+========================= -->
+
 <section class="section">
 
   <div class="container">
+
 
     <div
       class="grid three"
       id="skillsContainer"
     >
+
+
+
+      <!-- =========================
+           مهارات التواصل
+      ========================== -->
 
       <a
         href="course.html"
@@ -74,161 +293,457 @@
         data-name="التواصل الحديث الاستماع"
       >
 
+
         <div class="icon green">
           💬
         </div>
+
 
         <h3>
           مهارات التواصل
         </h3>
 
+
         <p>
+
           طور قدرتك على الحديث والاستماع
           والتواصل بثقة.
+
         </p>
 
+
         <strong>
-          5 دروس
+          5 دروس • ابدأ المسار ←
         </strong>
+
 
       </a>
 
+
+
+      <!-- =========================
+           إدارة الوقت
+      ========================== -->
 
       <div
         class="card skill-card"
         data-name="الوقت الانتاجية تنظيم"
       >
 
+
         <div class="icon orange">
           ⏱️
         </div>
+
 
         <h3>
           إدارة الوقت
         </h3>
 
+
         <p>
           تعلم تنظيم وقتك وزيادة إنتاجيتك.
         </p>
+
 
         <span class="soon">
           قريباً
         </span>
 
+
       </div>
 
+
+
+      <!-- =========================
+           التفكير النقدي
+      ========================== -->
 
       <div
         class="card skill-card"
         data-name="التفكير النقدي القرارات"
       >
 
+
         <div class="icon purple">
           🧠
         </div>
+
 
         <h3>
           التفكير النقدي
         </h3>
 
+
         <p>
-          طور مهارة التحليل واتخاذ القرارات.
+
+          طور مهارة التحليل
+          واتخاذ القرارات.
+
         </p>
+
 
         <span class="soon">
           قريباً
         </span>
 
+
       </div>
 
+
+
+      <!-- =========================
+           القيادة
+      ========================== -->
 
       <div
         class="card skill-card"
         data-name="القيادة الفريق ادارة"
       >
 
+
         <div class="icon blue">
           👥
         </div>
+
 
         <h3>
           القيادة
         </h3>
 
+
         <p>
-          تعلم قيادة الفرق وتحفيز الآخرين.
+
+          تعلم قيادة الفرق
+          وتحفيز الآخرين.
+
         </p>
+
 
         <span class="soon">
           قريباً
         </span>
 
+
       </div>
 
+
+
+      <!-- =========================
+           الذكاء الاصطناعي
+      ========================== -->
 
       <div
         class="card skill-card"
         data-name="ذكاء اصطناعي ai تكنولوجيا"
       >
 
+
         <div class="icon purple">
           🤖
         </div>
+
 
         <h3>
           الذكاء الاصطناعي
         </h3>
 
+
         <p>
-          استخدم أدوات الذكاء الاصطناعي بفعالية.
+
+          استخدم أدوات الذكاء
+          الاصطناعي بفعالية.
+
         </p>
+
 
         <span class="soon">
           قريباً
         </span>
 
+
       </div>
 
+
+
+      <!-- =========================
+           الإنجليزية
+      ========================== -->
 
       <div
         class="card skill-card"
         data-name="اللغة الانجليزية لغات"
       >
 
+
         <div class="icon green">
           🌍
         </div>
+
 
         <h3>
           اللغة الإنجليزية
         </h3>
 
+
         <p>
-          طور مهاراتك في اللغة الإنجليزية.
+
+          طور مهاراتك في
+          اللغة الإنجليزية.
+
         </p>
+
 
         <span class="soon">
           قريباً
         </span>
 
+
       </div>
 
+
     </div>
+
 
   </div>
 
 </section>
 
 
+
+<!-- =========================
+     الفوتر
+========================= -->
+
 <footer>
+
   <div class="container footer">
-    <h2>مهارة</h2>
-    <div>© 2026 مهارة</div>
+
+
+    <div>
+
+      <h2>
+        مهارة
+      </h2>
+
+      <p>
+        تعلم مهارة جديدة كل يوم.
+      </p>
+
+    </div>
+
+
+    <div>
+      © 2026 مهارة
+    </div>
+
+
   </div>
+
 </footer>
 
 
+
+<!-- =========================
+     Firebase
+========================= -->
+
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js">
+</script>
+
+
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js">
+</script>
+
+
+<script src="js/firebase.js"></script>
+
+
+
+<!-- =========================
+     حالة المستخدم
+========================= -->
+
+<script>
+
+
+  const guestArea =
+    document.getElementById(
+      "guestArea"
+    );
+
+
+  const userArea =
+    document.getElementById(
+      "userArea"
+    );
+
+
+  const welcomeUser =
+    document.getElementById(
+      "welcomeUser"
+    );
+
+
+  const logoutButton =
+    document.getElementById(
+      "logoutButton"
+    );
+
+
+
+  /* =========================
+     حالة تسجيل الدخول
+  ========================== */
+
+  auth.onAuthStateChanged(
+
+    function(user) {
+
+
+      /* مسجل */
+
+      if (user) {
+
+
+        guestArea.style.display =
+          "none";
+
+
+        userArea.style.display =
+          "flex";
+
+
+        if (user.displayName) {
+
+
+          welcomeUser.textContent =
+
+            "مرحباً، " +
+
+            user.displayName;
+
+
+        }
+
+
+        else if (user.email) {
+
+
+          welcomeUser.textContent =
+
+            "مرحباً، " +
+
+            user.email.split("@")[0];
+
+
+        }
+
+
+        return;
+
+      }
+
+
+
+      /* غير مسجل */
+
+      guestArea.style.display =
+        "flex";
+
+
+      userArea.style.display =
+        "none";
+
+
+      welcomeUser.textContent =
+        "";
+
+
+    }
+
+  );
+
+
+
+  /* =========================
+     تسجيل الخروج
+  ========================== */
+
+  logoutButton.addEventListener(
+
+    "click",
+
+    async function() {
+
+
+      logoutButton.disabled =
+        true;
+
+
+      logoutButton.textContent =
+        "جاري الخروج...";
+
+
+      try {
+
+
+        await auth.signOut();
+
+
+        logoutButton.disabled =
+          false;
+
+
+        logoutButton.textContent =
+          "تسجيل الخروج";
+
+
+      }
+
+
+      catch(error) {
+
+
+        console.error(
+          error
+        );
+
+
+        logoutButton.disabled =
+          false;
+
+
+        logoutButton.textContent =
+          "تسجيل الخروج";
+
+
+        alert(
+          "حدث خطأ أثناء تسجيل الخروج."
+        );
+
+
+      }
+
+
+    }
+
+  );
+
+
+</script>
+
+
+
+<!-- =========================
+     البحث وباقي وظائف الموقع
+========================= -->
+
 <script src="js/app.js"></script>
 
+
 </body>
+
 </html>
