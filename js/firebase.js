@@ -17,3 +17,4 @@ firebase.initializeApp(firebaseConfig);
 
 // خدمة تسجيل الدخول
 const auth = firebase.auth();
+const db = firebase.firestore();
