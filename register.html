@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>إنشاء حساب | مهارة</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<!-- الهيدر -->
+
+<header class="header">
+
+  <div class="container navbar">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+      <span>م</span>
+      مهارة
+    </a>
+
+
+    <nav>
+
+      <a href="index.html">
+        الرئيسية
+      </a>
+
+      <a href="skills.html">
+        المهارات
+      </a>
+
+      <a href="course.html">
+        المسارات
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<!-- إنشاء الحساب -->
+
+<main class="auth-page">
+
+  <div class="auth-container">
+
+
+    <!-- الجانب التعريفي -->
+
+    <section class="auth-info">
+
+      <span class="badge">
+        ابدأ رحلتك 🚀
+      </span>
+
+
+      <h1>
+
+        أنشئ حسابك
+
+        <span>
+          وابدأ بالتعلم
+        </span>
+
+      </h1>
+
+
+      <p>
+
+        حساب واحد يمنحك الوصول إلى
+        المسارات والدروس والاختبارات
+        ومتابعة تقدمك في منصة مهارة.
+
+      </p>
+
+
+      <div class="auth-features">
+
+
+        <div>
+
+          <span>✓</span>
+
+          <p>
+            حفظ تقدمك في الدورات
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <span>✓</span>
+
+          <p>
+            الوصول إلى جميع الدروس
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <span>✓</span>
+
+          <p>
+            حفظ نتائج اختباراتك
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- بطاقة التسجيل -->
+
+    <section class="auth-card">
+
+
+      <div class="auth-card-head">
+
+        <div class="auth-logo">
+          م
+        </div>
+
+
+        <h2>
+          إنشاء حساب
+        </h2>
+
+
+        <p>
+          أدخل بياناتك للبدء
+        </p>
+
+      </div>
+
+
+
+      <!-- رسائل الخطأ والنجاح -->
+
+      <div
+        id="registerMessage"
+        class="auth-message"
+      ></div>
+
+
+
+      <!-- النموذج -->
+
+      <form id="registerForm">
+
+
+        <!-- الاسم -->
+
+        <div class="form-group">
+
+          <label for="registerName">
+            الاسم
+          </label>
+
+
+          <input
+            id="registerName"
+            type="text"
+            autocomplete="name"
+            placeholder="اكتب اسمك"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- البريد -->
+
+        <div class="form-group">
+
+          <label for="registerEmail">
+            البريد الإلكتروني
+          </label>
+
+
+          <input
+            id="registerEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="name@example.com"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- كلمة المرور -->
+
+        <div class="form-group">
+
+          <label for="registerPassword">
+            كلمة المرور
+          </label>
+
+
+          <input
+            id="registerPassword"
+            type="password"
+            autocomplete="new-password"
+            placeholder="6 أحرف على الأقل"
+            minlength="6"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- تأكيد كلمة المرور -->
+
+        <div class="form-group">
+
+          <label for="confirmPassword">
+            تأكيد كلمة المرور
+          </label>
+
+
+          <input
+            id="confirmPassword"
+            type="password"
+            autocomplete="new-password"
+            placeholder="أعد كتابة كلمة المرور"
+            minlength="6"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- زر التسجيل -->
+
+        <button
+          id="registerButton"
+          type="submit"
+          class="button auth-submit"
+        >
+
+          إنشاء الحساب
+
+        </button>
+
+
+      </form>
+
+
+
+      <p class="register-text">
+
+        لديك حساب بالفعل؟
+
+        <a href="login.html">
+          تسجيل الدخول
+        </a>
+
+      </p>
+
+
+    </section>
+
+
+  </div>
+
+</main>
+
+
+
+<!-- الفوتر -->
+
+<footer>
+
+  <div class="container footer">
+
+    <div>
+      © 2026 مهارة
+    </div>
+
+    <div>
+      تعلم • طبّق • تطور
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- Firebase -->
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+<script src="js/firebase.js"></script>
+
+
+<!-- كود إنشاء الحساب -->
+
+<script>
+
+  const registerForm =
+    document.getElementById("registerForm");
+
+  const registerMessage =
+    document.getElementById("registerMessage");
+
+  const registerButton =
+    document.getElementById("registerButton");
+
+
+  registerForm.addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const name =
+        document
+          .getElementById("registerName")
+          .value
+          .trim();
+
+
+      const email =
+        document
+          .getElementById("registerEmail")
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById("registerPassword")
+          .value;
+
+
+      const confirmPassword =
+        document
+          .getElementById("confirmPassword")
+          .value;
+
+
+      /* تنظيف الرسالة */
+
+      registerMessage.className =
+        "auth-message";
+
+      registerMessage.textContent =
+        "";
+
+
+      /* فحص الاسم */
+
+      if (name.length < 2) {
+
+        showRegisterError(
+          "يرجى كتابة اسم صحيح."
+        );
+
+        return;
+
+      }
+
+
+      /* فحص كلمات المرور */
+
+      if (password !== confirmPassword) {
+
+        showRegisterError(
+          "كلمتا المرور غير متطابقتين."
+        );
+
+        return;
+
+      }
+
+
+      if (password.length < 6) {
+
+        showRegisterError(
+          "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل."
+        );
+
+        return;
+
+      }
+
+
+      try {
+
+        /* تعطيل الزر */
+
+        registerButton.disabled = true;
+
+        registerButton.textContent =
+          "جاري إنشاء الحساب...";
+
+
+        /* إنشاء المستخدم */
+
+        const result =
+          await auth
+            .createUserWithEmailAndPassword(
+              email,
+              password
+            );
+
+
+        /* حفظ الاسم داخل حساب Firebase */
+
+        await result.user.updateProfile({
+          displayName: name
+        });
+
+
+        /* رسالة نجاح */
+
+        registerMessage.className =
+          "auth-message success";
+
+        registerMessage.textContent =
+          "تم إنشاء حسابك بنجاح. سيتم تحويلك الآن...";
+
+
+        /* الانتقال بعد التسجيل */
+
+        setTimeout(function() {
+
+          window.location.href =
+            "skills.html";
+
+        }, 1200);
+
+
+      } catch (error) {
+
+        registerButton.disabled = false;
+
+        registerButton.textContent =
+          "إنشاء الحساب";
+
+
+        let message =
+          "حدث خطأ أثناء إنشاء الحساب.";
+
+
+        if (
+          error.code ===
+          "auth/email-already-in-use"
+        ) {
+
+          message =
+            "يوجد حساب مسجل بهذا البريد الإلكتروني.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "auth/invalid-email"
+        ) {
+
+          message =
+            "البريد الإلكتروني غير صحيح.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "auth/weak-password"
+        ) {
+
+          message =
+            "كلمة المرور ضعيفة. استخدم كلمة مرور أقوى.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "auth/operation-not-allowed"
+        ) {
+
+          message =
+            "التسجيل بالبريد الإلكتروني غير مفعل في Firebase.";
+
+        }
+
+
+        showRegisterError(message);
+
+        console.error(error);
+
+      }
+
+    }
+  );
+
+
+  function showRegisterError(message) {
+
+    registerMessage.className =
+      "auth-message error";
+
+    registerMessage.textContent =
+      message;
+
+  }
+
+</script>
+
+
+</body>
+
+</html>
