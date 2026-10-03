@@ -670,3 +670,38 @@ loadLesson();
 updateProgressBars();
 
 updateCourseLessons();
+/* =========================
+   صفحة تسجيل الدخول
+========================= */
+
+const togglePassword =
+  document.getElementById("togglePassword");
+
+const loginPassword =
+  document.getElementById("loginPassword");
+
+
+if (togglePassword && loginPassword) {
+
+  togglePassword.addEventListener(
+    "click",
+    function () {
+
+      if (loginPassword.type === "password") {
+
+        loginPassword.type = "text";
+
+        togglePassword.textContent = "إخفاء";
+
+      } else {
+
+        loginPassword.type = "password";
+
+        togglePassword.textContent = "إظهار";
+
+      }
+
+    }
+  );
+
+}
