@@ -2,93 +2,282 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>الدرس | مهارة</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <style>
+
+    /* نخفي المحتوى حتى ينتهي فحص Firebase */
+
+    body {
+      visibility: hidden;
+    }
+
+    body.auth-ready {
+      visibility: visible;
+    }
+
+
+    /* المستخدم */
+
+    .user-area {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+
+    .user-name {
+      color: #146b5a;
+
+      font-size: 14px;
+
+      font-weight: bold;
+    }
+
+
+    /* تسجيل الخروج */
+
+    .logout-button {
+
+      padding: 9px 14px;
+
+      background: white;
+
+      color: #56645f;
+
+      border:
+        1px solid #dce4e2;
+
+      border-radius: 8px;
+
+      font-family: inherit;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+
+    .logout-button:hover {
+
+      color: white;
+
+      background: #146b5a;
+
+      border-color: #146b5a;
+    }
+
+
+    @media(max-width: 600px) {
+
+      .user-name {
+        display: none;
+      }
+
+    }
+
+  </style>
+
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     الهيدر
+========================= -->
 
 <header class="header">
 
   <div class="container navbar">
 
-    <a href="index.html" class="logo">
-      <span>م</span>
+
+    <!-- الشعار -->
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <span>
+        م
+      </span>
+
       مهارة
+
     </a>
 
+
+
+    <!-- العودة -->
+
     <nav>
+
       <a href="course.html">
+
         العودة للمسار
+
       </a>
+
     </nav>
+
+
+
+    <!-- معلومات المستخدم -->
+
+    <div class="user-area">
+
+
+      <span
+        id="userName"
+        class="user-name"
+      >
+      </span>
+
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        تسجيل الخروج
+
+      </button>
+
+
+    </div>
+
 
   </div>
 
 </header>
 
 
+
+<!-- =========================
+     محتوى الدرس
+========================= -->
+
 <main class="lesson-page">
 
   <div class="container lesson-layout">
 
 
+    <!-- الدرس -->
+
     <article class="lesson-content">
 
-      <span id="lessonLabel" class="badge">
+
+      <span
+        id="lessonLabel"
+        class="badge"
+      >
+
         الدرس
+
       </span>
 
+
       <h1 id="lessonTitle">
+
         جاري تحميل الدرس...
+
       </h1>
 
-      <div id="lessonBody"></div>
 
+      <!--
+        app.js سيضع محتوى الدرس هنا
+      -->
+
+      <div id="lessonBody">
+      </div>
+
+
+
+      <!-- الأزرار -->
 
       <div class="lesson-actions">
+
 
         <a
           href="course.html"
           class="secondary-button"
         >
+
           العودة للمسار
+
         </a>
+
 
         <button
           id="completeLesson"
           class="button"
+          type="button"
         >
+
           أكملت هذا الدرس ✓
+
         </button>
 
+
       </div>
+
 
     </article>
 
 
+
+    <!-- =========================
+         التقدم
+    ========================== -->
+
     <aside class="side-card">
+
 
       <span>
         تقدم المسار
       </span>
 
+
       <h2 id="lessonProgressText">
         0%
       </h2>
 
+
       <div class="big-progress">
-        <div id="lessonProgress"></div>
+
+        <div id="lessonProgress">
+        </div>
+
       </div>
 
+
       <p>
+
         يتم حفظ تقدمك تلقائياً
         على هذا الجهاز.
+
       </p>
+
 
     </aside>
 
@@ -98,7 +287,236 @@
 </main>
 
 
+
+<!-- =========================
+     Firebase
+========================= -->
+
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js">
+</script>
+
+
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js">
+</script>
+
+
+<!-- إعداد Firebase -->
+
+<script src="js/firebase.js"></script>
+
+
+
+<!-- =========================
+     حماية صفحة الدرس
+========================= -->
+
+<script>
+
+
+  auth.onAuthStateChanged(
+
+    function(user) {
+
+
+      /* =========================
+         المستخدم غير مسجل
+      ========================= */
+
+      if (!user) {
+
+
+        /*
+          مثال:
+
+          lesson.html?id=3
+
+          سيتم الاحتفاظ أيضاً بـ id=3
+        */
+
+
+        const fileName =
+
+          window.location.pathname
+            .split("/")
+            .pop();
+
+
+
+        const currentPage =
+
+          fileName +
+
+          window.location.search;
+
+
+
+        /*
+          نرسله إلى تسجيل الدخول
+        */
+
+        window.location.replace(
+
+          "login.html?next=" +
+
+          encodeURIComponent(
+            currentPage
+          )
+
+        );
+
+
+        return;
+
+      }
+
+
+
+      /* =========================
+         المستخدم مسجل
+      ========================= */
+
+
+      document.body
+        .classList
+        .add(
+          "auth-ready"
+        );
+
+
+
+      /* =========================
+         عرض اسم المستخدم
+      ========================= */
+
+
+      const userName =
+
+        document.getElementById(
+          "userName"
+        );
+
+
+      if (user.displayName) {
+
+
+        userName.textContent =
+
+          "مرحباً، " +
+
+          user.displayName;
+
+
+      }
+
+
+      else if (user.email) {
+
+
+        userName.textContent =
+
+          "مرحباً، " +
+
+          user.email.split("@")[0];
+
+
+      }
+
+
+    }
+
+  );
+
+
+
+  /* =========================
+     تسجيل الخروج
+  ========================= */
+
+
+  const logoutButton =
+
+    document.getElementById(
+      "logoutButton"
+    );
+
+
+
+  logoutButton.addEventListener(
+
+    "click",
+
+    async function() {
+
+
+      logoutButton.disabled =
+        true;
+
+
+      logoutButton.textContent =
+        "جاري الخروج...";
+
+
+      try {
+
+
+        await auth.signOut();
+
+
+        /*
+          بعد الخروج نذهب للرئيسية
+        */
+
+        window.location.replace(
+          "index.html"
+        );
+
+
+      }
+
+
+      catch(error) {
+
+
+        console.error(
+          "Logout error:",
+          error
+        );
+
+
+        logoutButton.disabled =
+          false;
+
+
+        logoutButton.textContent =
+          "تسجيل الخروج";
+
+
+        alert(
+          "حدث خطأ أثناء تسجيل الخروج."
+        );
+
+
+      }
+
+
+    }
+
+  );
+
+
+</script>
+
+
+
+<!-- =========================
+     كود الدروس الموجود لديك
+========================= -->
+
 <script src="js/app.js"></script>
 
+
 </body>
+
 </html>
