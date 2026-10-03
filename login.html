@@ -12,7 +12,6 @@
 
   <title>تسجيل الدخول | مهارة</title>
 
-  <!-- ملف التصميم -->
   <link
     rel="stylesheet"
     href="css/style.css"
@@ -32,10 +31,7 @@
 
   <div class="container navbar">
 
-    <a
-      href="index.html"
-      class="logo"
-    >
+    <a href="index.html" class="logo">
 
       <span>م</span>
 
@@ -75,11 +71,10 @@
   <div class="auth-container">
 
 
-    <!-- =========================
-         الجانب التعريفي
-    ========================== -->
+    <!-- الجانب التعريفي -->
 
     <section class="auth-info">
+
 
       <span class="badge">
         مرحباً بعودتك 👋
@@ -110,9 +105,7 @@
 
         <div>
 
-          <span>
-            ✓
-          </span>
+          <span>✓</span>
 
           <p>
             متابعة تقدمك في المسارات
@@ -123,9 +116,7 @@
 
         <div>
 
-          <span>
-            ✓
-          </span>
+          <span>✓</span>
 
           <p>
             حفظ الدروس التي أكملتها
@@ -136,9 +127,7 @@
 
         <div>
 
-          <span>
-            ✓
-          </span>
+          <span>✓</span>
 
           <p>
             الوصول إلى نتائج اختباراتك
@@ -149,13 +138,12 @@
 
       </div>
 
+
     </section>
 
 
 
-    <!-- =========================
-         نموذج تسجيل الدخول
-    ========================== -->
+    <!-- نموذج تسجيل الدخول -->
 
     <section class="auth-card">
 
@@ -182,7 +170,7 @@
 
 
 
-      <!-- رسائل الخطأ والنجاح -->
+      <!-- الرسائل -->
 
       <div
         id="loginMessage"
@@ -191,28 +179,29 @@
 
 
 
-      <!-- نموذج الدخول -->
-
       <form id="loginForm">
 
 
-        <!-- البريد الإلكتروني -->
+        <!-- البريد -->
 
         <div class="form-group">
 
+
           <label for="loginEmail">
+
             البريد الإلكتروني
+
           </label>
 
 
           <input
             id="loginEmail"
-            name="email"
             type="email"
             autocomplete="email"
             placeholder="name@example.com"
             required
           >
+
 
         </div>
 
@@ -227,12 +216,19 @@
 
 
             <label for="loginPassword">
+
               كلمة المرور
+
             </label>
 
 
-            <a href="#">
+            <a
+              href="#"
+              id="forgotPassword"
+            >
+
               نسيت كلمة المرور؟
+
             </a>
 
 
@@ -245,7 +241,6 @@
 
             <input
               id="loginPassword"
-              name="password"
               type="password"
               autocomplete="current-password"
               placeholder="أدخل كلمة المرور"
@@ -271,9 +266,10 @@
 
 
 
-        <!-- زر تسجيل الدخول -->
+        <!-- دخول -->
 
         <button
+          id="loginButton"
           type="submit"
           class="button auth-submit"
         >
@@ -286,8 +282,6 @@
       </form>
 
 
-
-      <!-- الفاصل -->
 
       <div class="auth-divider">
 
@@ -303,6 +297,7 @@
 
       <button
         type="button"
+        id="googleLogin"
         class="google-button"
       >
 
@@ -314,14 +309,14 @@
 
 
 
-      <!-- إنشاء حساب -->
-
       <p class="register-text">
 
         ليس لديك حساب؟
 
         <a href="register.html">
+
           إنشاء حساب جديد
+
         </a>
 
       </p>
@@ -344,16 +339,13 @@
 
   <div class="container footer">
 
-
     <div>
       © 2026 مهارة
     </div>
 
-
     <div>
       تعلم • طبّق • تطور
     </div>
-
 
   </div>
 
@@ -362,165 +354,442 @@
 
 
 <!-- =========================
-     JavaScript
+     Firebase
+
+     مهم:
+     يتم تحميل Firebase مرة واحدة فقط
 ========================= -->
 
-<!-- Firebase -->
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js">
+</script>
 
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script
+  src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js">
+</script>
 
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+<!-- إعداد Firebase -->
 
 <script src="js/firebase.js"></script>
 
 
-<!-- JavaScript الخاص بالموقع -->
 
-<script src="js/app.js"></script>
 <script>
 
-  const loginForm =
-    document.getElementById("loginForm");
+/* =========================
+   العناصر
+========================= */
 
-  const loginMessage =
-    document.getElementById("loginMessage");
+const loginForm =
+  document.getElementById("loginForm");
 
+const loginEmail =
+  document.getElementById("loginEmail");
 
-  loginForm.addEventListener(
-    "submit",
-    async function(event) {
+const loginPassword =
+  document.getElementById("loginPassword");
 
-      event.preventDefault();
+const loginButton =
+  document.getElementById("loginButton");
 
+const loginMessage =
+  document.getElementById("loginMessage");
 
-      const email =
-        document
-          .getElementById("loginEmail")
-          .value
-          .trim();
+const togglePassword =
+  document.getElementById("togglePassword");
 
+const googleLogin =
+  document.getElementById("googleLogin");
 
-      const password =
-        document
-          .getElementById("loginPassword")
-          .value;
-
-
-      loginMessage.className =
-        "auth-message";
-
-      loginMessage.textContent =
-        "";
+const forgotPassword =
+  document.getElementById("forgotPassword");
 
 
-      try {
 
-        const loginButton =
-          loginForm.querySelector(
-            'button[type="submit"]'
-          );
+/* =========================
+   إظهار رسالة
+========================= */
 
+function showMessage(
+  message,
+  type
+) {
 
-        loginButton.disabled = true;
+  loginMessage.className =
+    "auth-message " + type;
 
-        loginButton.textContent =
-          "جاري تسجيل الدخول...";
+  loginMessage.textContent =
+    message;
 
-
-        await auth
-          .signInWithEmailAndPassword(
-            email,
-            password
-          );
+}
 
 
-        loginMessage.className =
-          "auth-message success";
 
-        loginMessage.textContent =
-          "تم تسجيل الدخول بنجاح ✓";
+/* =========================
+   الصفحة التي سنذهب إليها
+========================= */
 
+function goAfterLogin() {
 
-        /*
-          إذا كان المستخدم حاول الدخول
-          لدورة قبل تسجيل الدخول نرجعه إليها.
-        */
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
 
-        const params =
-          new URLSearchParams(
-            window.location.search
-          );
-
-        const next =
-          params.get("next");
+  const next =
+    params.get("next");
 
 
-        setTimeout(function() {
+  /*
+    منع تحويل المستخدم إلى
+    رابط خارجي غير تابع للموقع
+  */
 
-          if (next) {
+  if (
+    next &&
+    !next.includes("://") &&
+    !next.startsWith("//")
+  ) {
 
-            window.location.href =
-              next;
+    window.location.href =
+      next;
 
-          } else {
+  } else {
 
-            window.location.href =
-              "skills.html";
+    window.location.href =
+      "skills.html";
 
-          }
+  }
 
-        }, 700);
-
-
-      } catch (error) {
-
-        const loginButton =
-          loginForm.querySelector(
-            'button[type="submit"]'
-          );
-
-
-        loginButton.disabled = false;
-
-        loginButton.textContent =
-          "تسجيل الدخول";
+}
 
 
-        let message =
-          "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+/* =========================
+   تسجيل الدخول
+========================= */
+
+loginForm.addEventListener(
+  "submit",
+  async function(event) {
+
+    event.preventDefault();
 
 
-        if (
-          error.code ===
-          "auth/too-many-requests"
-        ) {
+    const email =
+      loginEmail.value.trim();
 
-          message =
-            "تم إجراء محاولات كثيرة. حاول مرة أخرى لاحقاً.";
-
-        }
+    const password =
+      loginPassword.value;
 
 
-        loginMessage.className =
-          "auth-message error";
+    if (!email || !password) {
 
-        loginMessage.textContent =
-          message;
+      showMessage(
+        "يرجى إدخال البريد الإلكتروني وكلمة المرور.",
+        "error"
+      );
+
+      return;
+
+    }
 
 
-        console.error(error);
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      "جاري تسجيل الدخول...";
+
+
+    try {
+
+
+      await auth
+        .signInWithEmailAndPassword(
+          email,
+          password
+        );
+
+
+      showMessage(
+        "تم تسجيل الدخول بنجاح ✓",
+        "success"
+      );
+
+
+      setTimeout(
+        goAfterLogin,
+        700
+      );
+
+
+    } catch (error) {
+
+
+      console.error(
+        "Login error:",
+        error
+      );
+
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "تسجيل الدخول";
+
+
+      let message =
+        "تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور.";
+
+
+      if (
+        error.code ===
+        "auth/invalid-email"
+      ) {
+
+        message =
+          "صيغة البريد الإلكتروني غير صحيحة.";
 
       }
 
+
+      else if (
+        error.code ===
+        "auth/too-many-requests"
+      ) {
+
+        message =
+          "تم إجراء محاولات كثيرة. حاول لاحقاً.";
+
+      }
+
+
+      else if (
+        error.code ===
+        "auth/user-disabled"
+      ) {
+
+        message =
+          "تم تعطيل هذا الحساب.";
+
+      }
+
+
+      showMessage(
+        message,
+        "error"
+      );
+
+
     }
-  );
+
+  }
+);
+
+
+
+/* =========================
+   إظهار كلمة المرور
+========================= */
+
+togglePassword.addEventListener(
+  "click",
+  function() {
+
+
+    if (
+      loginPassword.type ===
+      "password"
+    ) {
+
+      loginPassword.type =
+        "text";
+
+      togglePassword.textContent =
+        "إخفاء";
+
+    } else {
+
+      loginPassword.type =
+        "password";
+
+      togglePassword.textContent =
+        "إظهار";
+
+    }
+
+
+  }
+);
+
+
+
+/* =========================
+   نسيت كلمة المرور
+========================= */
+
+forgotPassword.addEventListener(
+  "click",
+  async function(event) {
+
+    event.preventDefault();
+
+
+    const email =
+      loginEmail.value.trim();
+
+
+    if (!email) {
+
+      showMessage(
+        "اكتب بريدك الإلكتروني أولاً ثم اضغط نسيت كلمة المرور.",
+        "error"
+      );
+
+      loginEmail.focus();
+
+      return;
+
+    }
+
+
+    try {
+
+
+      await auth
+        .sendPasswordResetEmail(
+          email
+        );
+
+
+      showMessage(
+        "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.",
+        "success"
+      );
+
+
+    } catch (error) {
+
+
+      console.error(
+        "Reset error:",
+        error
+      );
+
+
+      showMessage(
+        "تعذر إرسال رابط استعادة كلمة المرور. تأكد من البريد الإلكتروني.",
+        "error"
+      );
+
+
+    }
+
+
+  }
+);
+
+
+
+/* =========================
+   تسجيل الدخول بـ Google
+========================= */
+
+googleLogin.addEventListener(
+  "click",
+  async function() {
+
+
+    const provider =
+      new firebase.auth
+        .GoogleAuthProvider();
+
+
+    try {
+
+
+      await auth
+        .signInWithPopup(
+          provider
+        );
+
+
+      showMessage(
+        "تم تسجيل الدخول باستخدام Google ✓",
+        "success"
+      );
+
+
+      setTimeout(
+        goAfterLogin,
+        700
+      );
+
+
+    } catch (error) {
+
+
+      console.error(
+        "Google login error:",
+        error
+      );
+
+
+      if (
+        error.code ===
+        "auth/popup-closed-by-user"
+      ) {
+
+        showMessage(
+          "تم إغلاق نافذة Google قبل إكمال تسجيل الدخول.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      showMessage(
+        "تعذر تسجيل الدخول باستخدام Google.",
+        "error"
+      );
+
+
+    }
+
+
+  }
+);
+
+
+
+/* =========================
+   إذا المستخدم مسجل أصلاً
+========================= */
+
+auth.onAuthStateChanged(
+  function(user) {
+
+    if (user) {
+
+      console.log(
+        "Logged in:",
+        user.email
+      );
+
+    }
+
+  }
+);
+
 
 </script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 
-<script src="js/firebase.js"></script>
-<script src="js/app.js"></script>
+
 </body>
 
 </html>
